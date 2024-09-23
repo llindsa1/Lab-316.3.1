@@ -82,7 +82,11 @@ var menuLinks = [
 
 
 
- //Part4:
+ /*Part4: Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
+Attach a delegated 'click' event listener to topMenuEl.
+The first line of code of the event listener function should call the event object's preventDefault() method.
+The second line of code of the function should immediately return if the element clicked was not an <a> element.
+Log the content of the <a> to verify the handler is working.*/
   const topMenuEl= 
   document.getElementById('top-menu');
   const topMenuLinks=
@@ -98,7 +102,9 @@ var menuLinks = [
   });
 
 
-
+/*The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
+The event listener should remove the active class from each other <a> element in topMenuLinks - whether the active class exists or not.
+Hint: Removing a non-existent class from an element does not cause an error!*/
 topMenuLinks.forEach(link => link.classList.remove('active'));
 clickedLink.classList.add('active');
 if (clickedLink.classList.contains(active)) {
@@ -108,6 +114,10 @@ if (clickedLink.classList.contains(active)) {
 }
   
 //Part 5
+/*Within the event listener, if the clicked <a> element does not yet have a class of "active" (it was inactive when clicked):
+If the clicked <a> element's "link" object within menuLinks has a subLinks property (all do, except for the "link" object for ABOUT), set the CSS top property of subMenuEl to 100%.
+Otherwise, set the CSS top property of subMenuEl to 0.
+Hint: Caching the "link" object will come in handy for passing its subLinks array later.*/
 const linkData = menuLinks.find(link => link.text === clickedLink.textContent);
 
 if (linkData.subLinks) {
@@ -117,6 +127,7 @@ if (linkData.subLinks) {
 else {
     subMenuEl.style.top = '0';
 }
+
 
 function buildSubmenu(subLinks) {
     subMenuEl.innerHTML = ''; 
