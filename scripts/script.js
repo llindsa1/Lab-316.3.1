@@ -91,6 +91,29 @@ clickedLink.classList.add('active');
 if (clickedLink.classList.contains(active)) {
     clickedLink.classList.remove('active');
 
-    
+
 }
   
+//Part 5
+const linkData = menuLinks.find(link => link.text === clickedLink.textContent);
+
+if (linkData.subLinks) {
+    buildSubmenu(linkData.subLinks);
+    subMenuEl.style.top = '100%';
+}
+else {
+    subMenuEl.style.top = '0';
+}
+
+function buildSubmenu(subLinks) {
+    subMenuEl.innerHTML = ''; 
+
+    subLinks.forEach(subLink => {
+        const subLinkEl=
+        document.createElement('a');
+        subLinkEl.href = subLink.href;
+        subLinkEl.textContent = subLink.text;
+        subMenuEl.appendChild(subLinkEl);
+    });
+}
+
