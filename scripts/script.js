@@ -54,5 +54,43 @@ var menuLinks = [
       topMenuEl.appendChild(newLink)
   })
   
-  // (DOM P2) Part1:
+  // (DOM P2) Part 3:
+  const subMenuEl = 
+  document.getElementById('sub-menu');
+  
+  subMenuEl.style.backgroundColor = 
+  getComputedStyle(document.documentElement)
+  .getPropertyValue('---sub-menu-bg');
+
+  subMenuEl.classList.add('flex-around');
+
+  subMenuEl.style.position = 'absolute';
+  
+  subMenuEl.style.top = '0';
+
+
+  //Part4:
+  const topMenuEl= 
+  document.getElementById('top-menu');
+  const topMenuLinks=
+  topMenuEl.querySelectorAll('a');
+
+  topMenuEl.addEventListener('click',function(event) {
+          event.preventDefault ();
+    const clickedLink = event.target;
+    
+    if (clickedLink.tagName !== 'A') return;
+
+    console.log(clickedLink.textContent);
+  });
+
+
+
+topMenuLinks.forEach(link => link.classList.remove('active'));
+clickedLink.classList.add('active');
+if (clickedLink.classList.contains(active)) {
+    clickedLink.classList.remove('active');
+
+    
+}
   
