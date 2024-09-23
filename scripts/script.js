@@ -117,3 +117,17 @@ function buildSubmenu(subLinks) {
     });
 }
 
+subMenuEl.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const clickedSubLink = event.target;
+    
+    if (clickedSubLink.tagName !== 'A')
+        return;
+
+    subMenuEl.style.top = '0';
+    topMenuLinks.forEach(links => link.classList.remove('active'));
+
+    const mainEl = document.querySelector('main');
+   
+})
