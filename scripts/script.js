@@ -1,9 +1,20 @@
 // Menu link data
 var menuLinks = [
-    { text: 'about', href: '/about' },
-    { text: 'catalog', href: '/catalog' },
-    { text: 'orders', href: '/orders' },
-    { text: 'account', href: '/account' },
+    {text: 'about', href: '/about'},
+    {text: 'catalog', href: '#', subLinks: [
+      {text: 'all', href: '/catalog/all'},
+      {text: 'top selling', href: '/catalog/top'},
+      {text: 'search', href: '/catalog/search'},
+    ]},
+    {text: 'orders', href: '#' , subLinks: [
+      {text: 'new', href: '/orders/new'},
+      {text: 'pending', href: '/orders/pending'},
+      {text: 'history', href: '/orders/history'},
+    ]},
+    {text: 'account', href: '#', subLinks: [
+      {text: 'profile', href: '/account/profile'},
+      {text: 'sign out', href: '/account/signout'},
+    ]},
   ];
   
   //Part 1
@@ -54,22 +65,24 @@ var menuLinks = [
       topMenuEl.appendChild(newLink)
   })
   
-  // (DOM P2) Part 3:
+ // (DOM P2) Part 3:
+
+ //Select and cache the <nav id="sub-menu"> element in a variable named subMenuEl.
   const subMenuEl = 
   document.getElementById('sub-menu');
   
+  //Set the background color of subMenuEl to the value stored in the --sub-menu-bg CSS custom property.
   subMenuEl.style.backgroundColor = 
   getComputedStyle(document.documentElement)
   .getPropertyValue('---sub-menu-bg');
 
+  //Add the class of flex-around to the subMenuEl element.
   subMenuEl.classList.add('flex-around');
 
-  subMenuEl.style.position = 'absolute';
-  
-  subMenuEl.style.top = '0';
 
 
-  //Part4:
+
+ //Part4:
   const topMenuEl= 
   document.getElementById('top-menu');
   const topMenuLinks=
